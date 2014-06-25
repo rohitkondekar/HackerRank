@@ -1,0 +1,28 @@
+//Perl Program
+//https://www.hackerrank.com/challenges/detect-the-domain-name
+
+sub uniq {
+    my %seen;
+    grep !$seen{$_}++, @_;
+}
+
+$userinput = "";
+
+foreach $line (<stdin>){
+    chomp($line);
+    $userinput = $userinput.$line;
+}
+
+push @table, $1 while $userinput =~ m/((http:\/\/|https:\/\/|http%3A%2F%2F|https%3A%2F%2F){1}([A-Za-z0-9-]+)(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,}))/g;
+
+@table = uniq(@table);
+
+s/^(http:\/\/|https:\/\/|http%3A%2F%2F|https%3A%2F%2F)//g for @table;
+s/^(www.|ww2.)//gi for @table;
+@table = uniq(@table);
+
+@table = sort @table;
+
+$, = ';';
+print @table;
+

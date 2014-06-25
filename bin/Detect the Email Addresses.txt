@@ -1,0 +1,23 @@
+//Perl File
+//Detect the Email Addresses
+//https://www.hackerrank.com/challenges/detect-the-email-addresses
+
+sub uniq {
+    my %seen;
+    grep !$seen{$_}++, @_;
+}
+
+my $N = <stdin>;
+
+my $userinput = "";
+foreach $line (<stdin>){
+    $userinput = $userinput.$line;
+};
+
+push @table, $1 while $userinput =~ m/(([_a-zA-Z0-9-\+]+)(\.[_a-zA-Z0-9-\+]+)*@([A-Za-z0-9-]+)(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,}))/g;
+
+@table = uniq(@table);
+@table = sort @table;
+
+$, = ';';
+print @table;
