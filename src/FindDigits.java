@@ -5,6 +5,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * https://www.hackerrank.com/challenges/find-digits
+ * @author rohitkondekar
+ *
+ */
 public class FindDigits {
 	
 	public static void main(String[] args) throws IOException {
